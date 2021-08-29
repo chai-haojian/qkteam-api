@@ -6,5 +6,5 @@ create table `register` (
     `qq` varchar(64) collate utf8mb4_general_ci not null ,
     `specialty` varchar(64) collate utf8mb4_general_ci not null ,
     `self_introduction` varchar(64) collate utf8mb4_general_ci not null ,
-    primary key ('id')
+    primary key (`id`)
 )engine = InnoDB default charset = utf8mb4 collate = utf8mb4_general_ci;

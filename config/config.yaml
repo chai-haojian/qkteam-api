@@ -2,6 +2,8 @@ app:
   name: "qkteam-api"
   mode: "dev"
   port: 8080
+  start_time: "2021-08-22"
+  machine_id: 1
 log:
   level:  "debug"
   filename:  "qkteam_api.logger"

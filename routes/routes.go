@@ -17,6 +17,10 @@ func Setup() *gin.Engine {
 	{
 		register.POST("/submit", controller.SubmitHandler)
 	}
+	admin := r.Group("/admin")
+	{
+		admin.GET("/all", controller.GetAllPostHandler)
+	}
 
 	r.GET("/", func(c *gin.Context) {
 		c.JSON(http.StatusOK, gin.H{
