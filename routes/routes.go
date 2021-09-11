@@ -1,18 +1,17 @@
 package routes
 
 import (
+	"github.com/gin-gonic/gin"
 	"net/http"
 	"qkteam-api/controller"
 	"qkteam-api/logger"
-
-	"github.com/gin-gonic/gin"
+	"qkteam-api/middleware"
 )
 
 func Setup() *gin.Engine {
 	r := gin.New()
 
-	r.Use(logger.GinLogger(), logger.GinRecovery(true))
-
+	r.Use(logger.GinLogger(), logger.GinRecovery(true), middleware.Cors())
 	register := r.Group("/register")
 	{
 		register.POST("/submit", controller.SubmitHandler)

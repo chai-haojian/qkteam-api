@@ -2,14 +2,11 @@ package main
 
 import (
 	"fmt"
+	"go.uber.org/zap"
 	"qkteam-api/config"
 	"qkteam-api/dao/mysql"
 	"qkteam-api/logger"
-	snowflake "qkteam-api/pkg"
 	"qkteam-api/routes"
-
-	"github.com/spf13/viper"
-	"go.uber.org/zap"
 )
 
 func main() {
@@ -28,11 +25,6 @@ func main() {
 		fmt.Printf("Init mysql faild, err:%v\n", err)
 	}
 	defer mysql.Close()
-	//初始化雪花算法
-	if err := snowflake.Init(viper.GetString("app.start_time"), viper.GetInt64("app.machine_id")); err != nil {
-		fmt.Printf("Init snowflake failed,err:%v", err)
-		return
-	}
 	//注册路由
 	r := routes.Setup()
 
